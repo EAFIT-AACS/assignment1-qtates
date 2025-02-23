@@ -36,7 +36,6 @@ Algorithm for computing the collapsing relation ~ for a given DFA M with no inac
 Took the array of functions according to the case (i), took the array of each function (j) and makes a dictionary, where the key is the tuple of (state,string) and the value is the resultant state. As a little aclaration each function is stored as [state, resultantState1, resultantState2,...,resultantStateN]
 
 ```
-   # Mark the matrix with "x" for every pair composed of a initial state or (XOR) a final state
     columns = 1
     for k in range(1, states):
         for j in range(columns):
