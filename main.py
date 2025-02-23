@@ -6,31 +6,48 @@ def print_matrix(matrix):
             print(matrix[k][j], end=" ")
         print()
         columns += 1
+# Read the number of cases
 cases = int(input())
+statesGeneral=[]
+alphabetGeneral=[]
+finalStatesGeneral=[]
+functionsGeneral=[]
+
+for i in range(cases):
+    functionGroup = []
+    # Read the number of states and appends to the list of states
+    statesGeneral.append(int(input()))
+    # Read the alphabet and appends to the list of alphabet
+    alphabetGeneral.append(input().split())
+    # Read the final states and appends to the list of final states
+    finalStatesGeneral.append(input().split())
+    for i in range(len(finalStatesGeneral)):
+        finalStatesGeneral[i] = [int(x) for x in finalStatesGeneral[i]]
+    for i in range(statesGeneral[i]):
+        function = input().split()
+        functionGroup.append(function)
+    functionsGeneral.append(functionGroup)
 for i in range(cases):
     functions = {}
-    states = int(input())
-    alphabet = input().split()
-    finalStates = input().split()
-    finalStates = [int(x) for x in finalStates]
+    states = statesGeneral[i]
+    alphabet = alphabetGeneral[i]
+    finalStates = finalStatesGeneral[i]
     # Read the transition functions and  organize them in the form: (initial_state, 'character'): arrive_state in a dictionary
     for j in range(states):
-        function = input().split()
         for k in range(len(alphabet)):
-            functions[(int(function[0]), alphabet[k])] = int(function[k+1])
+            functions[(int(functionsGeneral[i][j][0]), alphabet[k])] = int(functionsGeneral[i][j][k+1])
     
-    # Initialize the matrix with "0"
+    # Initialize the matrix with "0" Except on the diagonal, where the states are.
     matrix = [["0"] * states for _ in range(states)]
-    for i in range(states):
+    for k in range(states):
         for j in range(states):
-            if i == j:
-                matrix[i][j] = str(i)
+            if k == j:
+                matrix[k][j] = str(k)
     
     # Mark the matrix with "x" for every pair composed of a initial state or (XOR) a final state
     columns = 1
     for k in range(1, states):
         for j in range(columns):
-            if matrix[k][j] == "0":
                 if (k in finalStates) ^ (j in finalStates):
                     matrix[k][j] = "x"
         columns += 1
@@ -58,3 +75,4 @@ for i in range(cases):
             if matrix[k][j] == "0":
                 print(f"({j},{k})", end=" ")
         columns += 1
+    print()
