@@ -6,27 +6,51 @@ def print_matrix(matrix):
             print(matrix[k][j], end=" ")
         print()
         columns += 1
+
+with open('input.txt', 'r') as file:
+    lines = file.readlines()
 # Read the number of cases
-cases = int(input())
+cases = int(lines[0].strip())
 statesGeneral=[]
 alphabetGeneral=[]
 finalStatesGeneral=[]
 functionsGeneral=[]
 
+line_index = 1
 for i in range(cases):
     functionGroup = []
-    # Read the number of states and appends to the list of states
-    statesGeneral.append(int(input()))
-    # Read the alphabet and appends to the list of alphabet
-    alphabetGeneral.append(input().split())
-    # Read the final states and appends to the list of final states
-    finalStatesGeneral.append(input().split())
-    for i in range(len(finalStatesGeneral)):
-        finalStatesGeneral[i] = [int(x) for x in finalStatesGeneral[i]]
-    for i in range(statesGeneral[i]):
-        function = input().split()
+    # Read the number of states and append to the list of states
+    statesGeneral.append(int(lines[line_index].strip()))
+    line_index += 1
+    # Read the alphabet and append to the list of alphabet
+    alphabetGeneral.append(lines[line_index].strip().split())
+    line_index += 1
+    # Read the final states and append to the list of final states
+    finalStatesGeneral.append(lines[line_index].strip().split())
+    line_index += 1
+    for j in range(len(finalStatesGeneral[i])):
+        finalStatesGeneral[i][j] = int(finalStatesGeneral[i][j])
+    for j in range(statesGeneral[i]):
+        function = lines[line_index].strip().split()
         functionGroup.append(function)
+        line_index += 1
     functionsGeneral.append(functionGroup)
+
+# for i in range(cases):
+#     functionGroup = []
+#     # Read the number of states and appends to the list of states
+#     statesGeneral.append(int(input()))
+#     # Read the alphabet and appends to the list of alphabet
+#     alphabetGeneral.append(input().split())
+#     # Read the final states and appends to the list of final states
+#     finalStatesGeneral.append(input().split())
+#     for i in range(len(finalStatesGeneral)):
+#         finalStatesGeneral[i] = [int(x) for x in finalStatesGeneral[i]]
+#     for i in range(statesGeneral[i]):
+#         function = input().split()
+#         functionGroup.append(function)
+#     functionsGeneral.append(functionGroup)
+
 for i in range(cases):
     functions = {}
     states = statesGeneral[i]
