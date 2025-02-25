@@ -36,21 +36,6 @@ for i in range(cases):
         line_index += 1
     functionsGeneral.append(functionGroup)
 
-# for i in range(cases):
-#     functionGroup = []
-#     # Read the number of states and appends to the list of states
-#     statesGeneral.append(int(input()))
-#     # Read the alphabet and appends to the list of alphabet
-#     alphabetGeneral.append(input().split())
-#     # Read the final states and appends to the list of final states
-#     finalStatesGeneral.append(input().split())
-#     for i in range(len(finalStatesGeneral)):
-#         finalStatesGeneral[i] = [int(x) for x in finalStatesGeneral[i]]
-#     for i in range(statesGeneral[i]):
-#         function = input().split()
-#         functionGroup.append(function)
-#     functionsGeneral.append(functionGroup)
-
 for i in range(cases):
     functions = {}
     states = statesGeneral[i]
