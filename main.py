@@ -84,4 +84,4 @@ for i in range(cases):
             if matrix[k][j] == "0":
                 print(f"({j},{k})", end=" ")
         columns += 1
-    print()
+    print()   
